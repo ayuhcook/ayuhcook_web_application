@@ -67,6 +67,14 @@
             </div>
         </div>
 
+        <!-- Rating and Bookmark -->
+        <div class="pt-2">
+            <p class="fw-bold">
+                300 Stars <i class="fas fa-star"></i> <br>
+                Bookmark by 25 People <i class="fas fa-bookmark"></i>
+            </p>
+        </div>
+
         <!-- recipe description -->
         <div class="py-4">
             <h5 class="text-danger">Descriptions</h5>
