@@ -45,7 +45,7 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        return view('Recipe.create');
+        return view('Recipe.show');
     }
 
     /**

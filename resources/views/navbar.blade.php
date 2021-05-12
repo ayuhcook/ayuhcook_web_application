@@ -13,7 +13,7 @@
                     <a class="nav-link active" href="/category">Category</a>
                 </li>
 
-                @if (Auth::guest())
+                @if (!Auth::guest())
                 <li class="nav-item dropdown">
                     <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Engku Nazri

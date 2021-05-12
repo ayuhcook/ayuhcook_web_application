@@ -22,6 +22,7 @@
         /*apply font*/
         body {
             font-family: 'Quicksand', sans-serif;
+            scroll-behavior: smooth;
         }
 
         .container-content {

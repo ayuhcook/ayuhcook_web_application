@@ -36,7 +36,9 @@
                                 <i class="fas fa-user-ninja"></i> Intermediate <br>
                                 <i class="fas fa-glass-cheers"></i> 2 Servings
                             </p>
-                            <button class="btn btn-danger mr-auto">Learn Recipe</button>
+                            <div class="pt-4">
+                                <a href="/recipes/123" class="btn btn-danger">Learn Recipe</a>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -60,7 +62,9 @@
                                 <i class="fas fa-user-ninja"></i> Intermediate <br>
                                 <i class="fas fa-glass-cheers"></i> 2 Servings
                             </p>
-                            <button class="btn btn-danger mr-auto">Learn Recipe</button>
+                            <div class="pt-4">
+                                <a href="/recipes/123" class="btn btn-danger">Learn Recipe</a>
+                            </div>
                         </div>
                     </div>
                 </a>

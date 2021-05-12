@@ -11,7 +11,9 @@
     <div class="container-content">
         <!-- User information -->
         <div class="text-center">
-            <img src="/sample_profile.jpg" class="img-thumbnail" width="200px" alt="">
+            <div class="bg-danger rounded py-5">
+                <img src="/sample_profile.jpg" class="img-thumbnail" width="200px" alt="">
+            </div>
             <h2 class="text-danger fw-bold p-4">Engku Nazri Engku Nasir</h2>
             <p><i class="fas fa-map-marker-alt"></i> Malaysia | <i class="fas fa-utensils"></i> 100 Contributions</p>
             <p>
@@ -21,12 +23,12 @@
 
         <!-- User Contribution Recipe -->
         <div class="pt-5">
-            <div class="text-center">
-                <h4 class="text-danger fw-bold p-4">Recipe Repository By Engku Nazri</h4>
-                <hr class="mx-auto bg-danger" style="width: 50px;">
+            <div class="">
+                <h4 class="text-danger fw-bold py-4">Recipe Repository By Engku Nazri</h4>
             </div>
             <div class="p-3">
                 <div class="row">
+                    <hr>
                     <div class="col-8">
                         <a href="/profile/123" class="text-decoration-none"><p class="text-muted">By Engku Nazri</p></a>
                         <h5 class="fw-bold text-danger">Ikan Siakap Lemak Cili Padi</h5>
