@@ -15,14 +15,4 @@ class HomeController extends Controller
     {
         return view('Home.search');
     }
-
-    public function showCategory()
-    {
-        return view('Home.category');
-    }
-
-    public function category()
-    {
-        return view('Home.recipe_list');
-    }
 }

@@ -5,6 +5,11 @@
 @endsection
 
 @section('css_dependencies')
+    <style>
+        .description-container {
+            max-width: 500px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -16,9 +21,19 @@
             </div>
             <h2 class="text-danger fw-bold p-4">Engku Nazri Engku Nasir</h2>
             <p><i class="fas fa-map-marker-alt"></i> Malaysia | <i class="fas fa-utensils"></i> 100 Contributions</p>
-            <p>
+            <p class="description-container mx-auto">
+                This is your own description
+                This is your own description
+                This is your own description
+                This is your own description
                 This is your own description
             </p>
+        </div>
+
+        <!-- profile configuration for owner only -->
+        <div class="mx-auto text-center">
+            <a href="/my-recipe-repository" class="btn btn-danger">Manage Repository</a>
+            <a href="/profile/123/edit" class="btn btn-outline-danger">Edit Profile</a>
         </div>
 
         <!-- User Contribution Recipe -->

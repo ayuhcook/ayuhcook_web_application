@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/recipes', [RecipeController::class, 'index']);
 Route::get('/recipes/{id}', [RecipeController::class, 'show']);
-Route::get('/recipes/create', [RecipeController::class, 'create']);
-Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit']);
+Route::get('/recipe/create', [RecipeController::class, 'create']);
+Route::get('/recipe/create/ingredient', [RecipeController::class, 'createIngredient']);
+Route::get('/recipe/create/step', [RecipeController::class, 'createStep']);
 
-Route::get('/category', [HomeController::class, 'showCategory']);
-Route::get('/category/{category_name}', [HomeController::class, 'category']);
+Route::get('/category', [RecipeController::class, 'showCategory']);
+Route::get('/category/{category_name}', [RecipeController::class, 'category']);
 
 Route::get('/sign-in', [AuthenticationController::class, 'showSignInForm']);
 Route::post('/sign-in', [AuthenticationController::class, 'signIn']);
@@ -39,8 +40,5 @@ Route::get('/profile/{id}', [UserController::class, 'show']);
 Route::get('/profile/{id}/edit', [UserController::class, 'edit']);
 Route::patch('/profile/{id}', [UserController::class, 'update']);
 
-
-/**
- * Manage Recipe
- */
-
+Route::get('/my-recipe-repository', [RecipeController::class, 'showUserRecipe']);
+Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit']);

@@ -10,6 +10,7 @@
     </p>
     <p>
         This is the footer section <br>
+        <span class="fst-italic">Created By Community for Community</span> <br>
         Develop and maintained by community who passionate on cooking and sharing love :D
     </p>
 </div>

@@ -36,8 +36,9 @@
         </div>
         <div class="container-carousel">
             <div class="container-carousel-button">
-                <button class="btn btn-outline-danger"><i class="fas fa-star"></i></button>
-                <button class="btn btn-outline-danger"><i class="fas fa-bookmark"></i></button>
+                <a href="#" class="btn btn-outline-danger"><i class="fas fa-star"></i></a>
+                <a href="#" class="btn btn-outline-danger"><i class="fas fa-bookmark"></i></a>
+                <a href="#" class="btn btn-outline-danger"><i class="fas fa-print"></i></a>
             </div>
             <div id="carouselRecipe" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-indicators">

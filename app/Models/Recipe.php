@@ -18,6 +18,7 @@ class Recipe extends Model
         'level',
         'post_by',
         'publicity',
+        'is_complete',
     ];
 
     public function ingredients() {

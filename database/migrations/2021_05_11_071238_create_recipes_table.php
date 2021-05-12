@@ -16,11 +16,15 @@ class CreateRecipesTable extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image_1')->nullable();
+            $table->string('image_2')->nullable();
+            $table->string('image_3')->nullable();
             $table->text('description')->nullable();
             $table->integer('servings');
             $table->integer('preparation_time');
             $table->integer('level');
             $table->boolean('publicity')->default(true);
+            $table->boolean('is_complete')->default(true);
 
             $table->bigInteger('likes')->default(0);
             $table->unsignedBigInteger('post_by')->nullable();
