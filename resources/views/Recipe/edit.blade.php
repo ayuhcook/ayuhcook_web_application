@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('title')
-    <title>Ayuh Cook - Create Recipe</title>
+    <title>Ayuh Cook - Edit Recipe</title>
 @endsection
 
 @section('css_dependencies')
@@ -9,12 +9,12 @@
 
 @section('content')
     <div class="container-content">
-        <h2 class="text-danger fw-bold text-center p-4">Create Recipe</h2>
+        <h2 class="text-danger fw-bold text-center p-4">Edit Recipe</h2>
         <div class="accordion" id="accordionExample">
             <!-- this goes the first step -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button collapsed text-body bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         Step 1: Recipe Name
                     </button>
                 </h2>
@@ -41,11 +41,22 @@
                             </div>
                             <div class="mb-3">
                                 <label for="level" class="form-label">Cooking Difficulties</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected value="1">Begineer Level</option>
-                                    <option value="2">Intermidiate Level</option>
-                                    <option value="3">Hard Level</option>
-                                </select>
+                                <div id="level">
+                                    <input type="radio" class="btn-check" name="level" id="begineer" autocomplete="off" required>
+                                    <label class="btn btn-outline-success" for="begineer">Begineer Level</label>
+                                    <input type="radio" class="btn-check" name="level" id="intermediate" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="intermediate">Intermediate Level</label>
+                                    <input type="radio" class="btn-check" name="level" id="expert" autocomplete="off">
+                                    <label class="btn btn-outline-warning" for="expert">Expert Level</label>
+                                </div>
+                            </div>
+                            <div class="mb-3 text-center mx-auto">
+                                <p class="text-danger">Images Preview</p>
+                                <p>
+                                    <img src="/preview_1.jpg" class="img-thumbnail" width="100px" height="auto" alt="">
+                                    <img src="/preview_1.jpg" class="img-thumbnail" width="100px" height="auto" alt="">
+                                    <img src="/preview_1.jpg" class="img-thumbnail" width="100px" height="auto" alt="">
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label for="file_input" class="form-label">Preview Image One (Required)</label>
@@ -70,7 +81,7 @@
                             </div>
 
                             <div class="d-grid gap-2 pt-3">
-                                <button class="btn btn-danger" type="button">Save & Go To Next Step</button>
+                                <button class="btn btn-danger">Save & Go To Next Step</button>
                             </div>
                         </form>
                     </div>
@@ -80,7 +91,7 @@
             <!-- this goes the 2nd step -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed bg-light text-body" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Step 2: Ingredients
                     </button>
                 </h2>
@@ -134,11 +145,11 @@
             <!-- this goes the 3rd step -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button text-danger bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Step 3: Cooking Steps
                     </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <!-- preview of cooking step -->
                         <div>

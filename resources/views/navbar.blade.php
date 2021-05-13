@@ -22,7 +22,7 @@
                         <li><a class="dropdown-item text-danger fw-bold" href="/recipe/create">Create Recipe</a></li>
                         <li><a class="dropdown-item" href="/profile/123">My Profile</a></li>
                         <li><a class="dropdown-item" href="/my-recipe-repository">My Recipe Repository</a></li>
-                        <li><a class="dropdown-item" href="#">My Bookmark</a></li>
+                        <li><a class="dropdown-item" href="/my-bookmark">My Bookmark</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Sign Out</a></li>
                     </ul>

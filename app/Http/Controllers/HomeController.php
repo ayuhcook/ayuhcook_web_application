@@ -15,4 +15,24 @@ class HomeController extends Controller
     {
         return view('Home.search');
     }
+
+    public function aboutUs()
+    {
+        return view('Miscellaneous.about');
+    }
+
+    public function supportUs()
+    {
+        return view('Miscellaneous.support');
+    }
+
+    public function feedbackForm()
+    {
+        return view('Miscellaneous.feedback');
+    }
+
+    public function notification()
+    {
+        return view('Miscellaneous.notification');
+    }
 }

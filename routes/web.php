@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/recipes', [RecipeController::class, 'index']);
 Route::get('/recipes/{id}', [RecipeController::class, 'show']);
+Route::get('/recipe/{id}/edit', [RecipeController::class, 'edit']);
 Route::get('/recipe/create', [RecipeController::class, 'create']);
 Route::get('/recipe/create/ingredient', [RecipeController::class, 'createIngredient']);
 Route::get('/recipe/create/step', [RecipeController::class, 'createStep']);
@@ -42,3 +43,13 @@ Route::patch('/profile/{id}', [UserController::class, 'update']);
 
 Route::get('/my-recipe-repository', [RecipeController::class, 'showUserRecipe']);
 Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit']);
+Route::get('/my-bookmark', [RecipeController::class, 'showBookmarkRecipe']);
+
+/**
+ * Update, Notification, Disclaimer and Dev Info
+ */
+
+Route::get('/about-us', [HomeController::class, 'aboutUs']);
+Route::get('/support-us', [HomeController::class, 'supportUs']);
+Route::get('/express-your-idea', [HomeController::class, 'feedbackForm']);
+Route::get('/notification-and-info', [HomeController::class, 'notification']);

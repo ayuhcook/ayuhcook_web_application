@@ -83,7 +83,47 @@
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        This is your form
+                        <!-- preview of ingredient -->
+                        <div>
+                            <table class="table">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Ingredient</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr>
+                                    <form action="">
+                                        <td>1</td>
+                                        <td>25g Breadcrumbs</td>
+                                        <input type="hidden" name="id" value="">
+                                        <td><button class="btn btn-outline-danger btn-sm">Delete</button></td>
+                                    </form>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- add cooking step -->
+                        <div>
+                            <form action="" autocomplete="off">
+                                <div class="mb-3">
+                                    <label for="ingredient" class="form-label">Ingredient</label>
+                                    <input type="text" class="form-control" id="ingredient" placeholder="Cake Flour">
+                                </div>
+                                <div class="d-grid gap-2 pt-3">
+                                    <button class="btn btn-outline-danger" type="button">Add Ingredient</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- redirect info to next step -->
+                        <div>
+                            <form action="">
+                                <div class="d-grid gap-2 pt-3">
+                                    <hr>
+                                    <button class="btn btn-danger" type="button">Save & Go To Next Step</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

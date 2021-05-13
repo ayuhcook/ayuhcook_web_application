@@ -38,7 +38,7 @@ class RecipeController extends Controller
 
     public function edit($id)
     {
-        //
+        return view('Recipe.edit');
     }
 
     public function update(Request $request, $id)
@@ -54,6 +54,11 @@ class RecipeController extends Controller
     public function showUserRecipe()
     {
         return view('Recipe.manage');
+    }
+
+    public function showBookmarkRecipe()
+    {
+        return view('Recipe.bookmark');
     }
 
 

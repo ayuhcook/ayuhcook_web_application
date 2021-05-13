@@ -31,14 +31,14 @@
                             <!-- for web view -->
                             <div class="d-none d-sm-none d-md-none d-lg-block">
                                 <a href="/recipes/123" class="btn btn-danger">View Recipe</a>
-                                <a href="/recipes/123" class="btn btn-outline-danger">Edit Recipe</a>
+                                <a href="/recipes/123/edit" class="btn btn-outline-danger">Edit Recipe</a>
                                 <button class="btn btn-outline-danger">Spread Your Love</button>
                             </div>
 
                             <!-- for mobile view -->
                             <div class="d-block d-sm-block d-md-block d-lg-none">
                                 <a href="/recipes/123" class="btn btn-danger">View</a>
-                                <a href="/recipes/123" class="btn btn-outline-danger">Edit</a>
+                                <a href="/recipes/123/edit" class="btn btn-outline-danger">Edit</a>
                                 <button class="btn btn-outline-danger">Share</button>
                             </div>
                         </div>

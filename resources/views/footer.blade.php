@@ -3,10 +3,10 @@
         <hr class="mx-auto bg-danger" style="width: 50px">
     </div>
     <p>
-        <a href="#" class="text-decoration-none text-danger fw-bold">About Us</a> |
-        <a href="#" class="text-decoration-none text-danger fw-bold">Support Us</a> |
-        <a href="#" class="text-decoration-none text-danger fw-bold">Express Your Idea</a> |
-        <a href="#" class="text-decoration-none text-danger fw-bold">Update Info</a>
+        <a href="/about-us" class="text-decoration-none text-danger fw-bold">About Us</a> |
+        <a href="/support-us" class="text-decoration-none text-danger fw-bold">Support Us</a> |
+        <a href="/express-your-idea" class="text-decoration-none text-danger fw-bold">Express Your Idea</a> |
+        <a href="/notification-and-info" class="text-decoration-none text-danger fw-bold">Notification & Info</a>
     </p>
     <p>
         This is the footer section <br>
