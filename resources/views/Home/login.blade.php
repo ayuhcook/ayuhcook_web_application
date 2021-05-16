@@ -20,18 +20,18 @@
     <div class="form mx-auto">
         <h2 class="text-danger fw-bold text-center pt-4">Sign In</h2>
         <p class="fst-italic text-center pb-4">Wake up it f00d's o clock</p>
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-        @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
 
-        <form action="" class="p-2">
+        <form action="/sign-in" method="POST" class="p-2">
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
             @csrf
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
