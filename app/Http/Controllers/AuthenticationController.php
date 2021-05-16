@@ -36,6 +36,6 @@ class AuthenticationController extends Controller
     {
         Auth::logout();
 
-        return redirect('logout', 'You have been successfully sign out from the website ;D');
+        return redirect('/sign-in')->with('message', 'You have been successfully sign out from the website ;D');
     }
 }

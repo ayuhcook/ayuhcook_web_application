@@ -20,37 +20,44 @@
     <div class="form mx-auto ">
         <h2 class="text-danger fw-bold text-center pt-4">Register</h2>
         <p class="fst-italic text-center pb-4">Express your joy & happiness by cooking :D</p>
-        <form action="" class="p-2">
+        <form action="/register" method="POST" class="p-2">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
             @csrf
             <div class="row mb-3">
                 <div class="col">
                     <label for="f_name" class="form-label">First Name</label>
-                    <input type="text" class="form-control" placeholder="Engku Nazri" id="name">
+                    <input type="text" name="f_name" class="form-control" placeholder="Engku Nazri" id="name">
                 </div>
                 <div class="col">
                     <label for="l_name" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" placeholder="Engku Nasir" id="name">
+                    <input type="text" name="l_name" class="form-control" placeholder="Engku Nasir" id="name">
                 </div>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="name@example.com" >
+                <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" >
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="*****">
+                <input type="password" name="password" class="form-control" id="password" placeholder="*****">
             </div>
             <div class="mb-3">
                 <label for="gender" class="form-label">Gender</label>
-                <select class="form-select" id="gender" aria-label="Select your gender">
+                <select class="form-select" name="gender" id="gender" aria-label="Select your gender">
                     <option value="1">Male</option>
                     <option value="2">Female</option>
-                    <option value="2">Prefer Not To Say</option>
+                    <option value="3">Prefer Not To Say</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="profession" class="form-label">Profession</label>
-                <select class="form-select" id="profession" aria-label="Select your gender">
+                <select class="form-select" name="profession" id="profession" aria-label="Select your gender">
                     <option value="house wife">House Wife</option>
                     <option value="house husband">House Husband</option>
                     <option value="doctor">Doctor</option>
@@ -64,7 +71,7 @@
             </div>
             <div class="mb-3">
                 <label for="country" class="form-label">Country</label>
-                <select class="form-select" id="country" aria-label="country">
+                <select class="form-select" id="country" name="country" aria-label="country">
                     <option value="Afganistan">Afghanistan</option>
                     <option value="Albania">Albania</option>
                     <option value="Algeria">Algeria</option>
@@ -315,7 +322,7 @@
             </div>
 
             <div class="d-grid gap-2 pt-5">
-                <button class="btn btn-danger" type="button">Register</button>
+                <button class="btn btn-danger">Register</button>
                 <a href="/sign-in" class="btn btn-outline-danger">Cancel</a>
             </div>
         </form>
