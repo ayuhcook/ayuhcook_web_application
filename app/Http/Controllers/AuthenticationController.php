@@ -29,7 +29,9 @@ class AuthenticationController extends Controller
             return redirect('/');
         }
 
-        return back()->with('error', 'The provided credential do not match our records');
+        return back()->withErrors([
+            'email' => 'The provided credential do not match our records'
+        ]);
     }
 
     public function signOut()
