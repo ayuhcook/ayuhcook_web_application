@@ -24,7 +24,7 @@ Route::get('/category/{category_name}', [RecipeController::class, 'category']);
 
 Route::get('/sign-in', [AuthenticationController::class, 'showSignInForm']);
 Route::post('/sign-in', [AuthenticationController::class, 'signIn']);
-Route::post('/sign-out', [AuthenticationController::class, 'signOut']);
+Route::get('/sign-out', [AuthenticationController::class, 'signOut']);
 
 Route::get('/register', [UserController::class, 'index']);
 Route::post('/register', [UserController::class, 'create']);

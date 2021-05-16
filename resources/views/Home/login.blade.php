@@ -22,10 +22,12 @@
         <p class="fst-italic text-center pb-4">Wake up it f00d's o clock</p>
 
         <form action="/sign-in" method="POST" class="p-2">
-            @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
             @endif
             @if (session('message'))
                 <div class="alert alert-success">
@@ -35,11 +37,11 @@
             @csrf
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="name@example.com" >
+                <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" >
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="*****">
+                <input type="password" name="password" class="form-control" id="password" placeholder="*****">
             </div>
 
             <div class="d-grid gap-2 pt-5">

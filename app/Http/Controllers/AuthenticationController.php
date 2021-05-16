@@ -9,7 +9,7 @@ class AuthenticationController extends Controller
 {
     public function showSignInForm()
     {
-        if (!Auth::guest()){
+        if(!Auth::guest()) {
             return redirect('/');
         }
 
@@ -19,7 +19,7 @@ class AuthenticationController extends Controller
     public function signIn(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
@@ -34,8 +34,12 @@ class AuthenticationController extends Controller
 
     public function signOut()
     {
-        Auth::logout();
+        if(!Auth::guest()) {
+            Auth::logout();
 
-        return redirect('/sign-in')->with('message', 'You have been successfully sign out from the website ;D');
+            return redirect('/sign-in')->with('message', 'You have been successfully sign out from the website ;D');
+        }
+
+        return abort(401);
     }
 }

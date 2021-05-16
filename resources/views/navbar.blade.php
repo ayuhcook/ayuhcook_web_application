@@ -24,7 +24,7 @@
                         <li><a class="dropdown-item" href="/my-recipe-repository">My Recipe Repository</a></li>
                         <li><a class="dropdown-item" href="/my-bookmark">My Bookmark</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                        <li><a class="dropdown-item" href="/sign-out">Sign Out</a></li>
                     </ul>
                     </li>
                 @else
