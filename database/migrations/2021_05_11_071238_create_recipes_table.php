@@ -22,7 +22,7 @@ class CreateRecipesTable extends Migration
             $table->text('description')->nullable();
             $table->integer('servings');
             $table->integer('preparation_time');
-            $table->integer('level');
+            $table->string('level');
             $table->boolean('publicity')->default(true);
             $table->boolean('is_complete')->default(true);
 

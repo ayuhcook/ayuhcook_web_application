@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('title')
-    <title>Ayuh Cook - Profile - Engku Nazri</title>
+    <title>Ayuh Cook - Profile - {{ $user->f_name }}</title>
 @endsection
 
 @section('css_dependencies')
@@ -19,52 +19,53 @@
             <div class="bg-danger rounded py-5">
                 <img src="/sample_profile.jpg" class="img-thumbnail" width="200px" alt="">
             </div>
-            <h2 class="text-danger fw-bold p-4">Engku Nazri Engku Nasir</h2>
-            <p><i class="fas fa-map-marker-alt"></i> Malaysia | <i class="fas fa-utensils"></i> 100 Contributions</p>
+            <h2 class="text-danger fw-bold p-4">{{ $user->f_name.' '.$user->l_name }}</h2>
+            <p><i class="fas fa-map-marker-alt"></i> {{ $user->country }} | <i class="fas fa-utensils"></i> {{ $contribution_count }} Contributions</p>
             <p class="description-container mx-auto">
-                This is your own description
-                This is your own description
-                This is your own description
-                This is your own description
-                This is your own description
+                {!! $user->description !!}
             </p>
         </div>
 
         <!-- profile configuration for owner only -->
-        <div class="mx-auto text-center">
-            <a href="/my-recipe-repository" class="btn btn-danger">Manage Repository</a>
-            <a href="/profile/123/edit" class="btn btn-outline-danger">Edit Profile</a>
-        </div>
+        @if (Auth::user()->id == $user->id)
+            <div class="mx-auto text-center">
+                <a href="/my-recipe-repository" class="btn btn-danger">Manage Repository</a>
+                <a href="/profile/{{ $user->id }}/edit" class="btn btn-outline-danger">Edit Profile</a>
+            </div>
+        @endif
 
         <!-- User Contribution Recipe -->
-        <div class="pt-5">
-            <div class="">
-                <h4 class="text-danger fw-bold py-4">Recipe Repository By Engku Nazri</h4>
-            </div>
-            <div class="p-3">
-                <div class="row">
-                    <hr>
-                    <div class="col-8">
-                        <a href="/profile/123" class="text-decoration-none"><p class="text-muted">By Engku Nazri</p></a>
-                        <h5 class="fw-bold text-danger">Ikan Siakap Lemak Cili Padi</h5>
-                        <p><i class="far fa-clock"></i> 10 minutes | <i class="fas fa-user-ninja"></i> Intermediate | <i class="fas fa-glass-cheers"></i> 10 Servings</p>
-                        <p>
-                            This is the description of the recipes <br>
-                            lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-                            lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-                        </p>
-                        <div class="footer-recipe">
-                            <button class="btn btn-danger">Learn Recipe</button>
-                            <button class="btn btn-outline-danger"><i class="fas fa-star"></i></button>
-                            <button class="btn btn-outline-danger"><i class="fas fa-bookmark"></i></button>
+        @if ($recipes == null)
+            <div class="pt-5">
+                <div class="">
+                    <h4 class="text-danger fw-bold py-4">Recipe Repository By Engku Nazri</h4>
+                </div>
+
+                @foreach ($recipes as $item)
+                    <div class="p-3">
+                        <div class="row">
+                            <hr>
+                            <div class="col-8">
+                                <a href="/profile/123" class="text-decoration-none"><p class="text-muted">By Engku Nazri</p></a>
+                                <h5 class="fw-bold text-danger">{{ $item->name }}</h5>
+                                <p><i class="far fa-clock"></i> {{ $item->preparation_time }} minutes | <i class="fas fa-user-ninja"></i> {{ $item->level }} | <i class="fas fa-glass-cheers"></i> {{ $item->servings }} People</p>
+                                <p>
+                                    {{ $item->description }}
+                                </p>
+                                <div class="footer-recipe">
+                                    <a href="/recipes/{{ $item->id }}" class="btn btn-danger">Learn Recipe</a>
+                                    <a href="" class="btn btn-outline-danger"><i class="fas fa-star"></i></a>
+                                    <a href="" class="btn btn-outline-danger"><i class="fas fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img src="/Category/main_dish.jpg" class="rounded" width="100%" alt="">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <img src="/Category/main_dish.jpg" class="rounded" width="100%" alt="">
-                    </div>
-                </div>
+                @endforeach
             </div>
-        </div>
+        @endif
     </div>
 
 @endsection

@@ -26,24 +26,28 @@ Route::get('/sign-in', [AuthenticationController::class, 'showSignInForm']);
 Route::post('/sign-in', [AuthenticationController::class, 'signIn']);
 Route::get('/sign-out', [AuthenticationController::class, 'signOut']);
 
-Route::get('/register', [UserController::class, 'index']);
-Route::post('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create']);
+Route::post('/register', [UserController::class, 'store']);
 
 Route::get('/forget-password', [HomeController::class, 'index']);
 Route::post('/reset-password', [UserController::class, 'resetPassword']);
 
 
 /**
- * User Section
+ * User Section and Recipe Configuration
  */
 
 Route::get('/profile/{id}', [UserController::class, 'show']);
+
 Route::get('/profile/{id}/edit', [UserController::class, 'edit']);
 Route::patch('/profile/{id}', [UserController::class, 'update']);
+Route::patch('/update-password/{id}', [UserController::class, 'updatePassword']);
+Route::patch('/update-profile-image/{id}', [UserController::class, 'updateProfileImage']);
 
 Route::get('/my-recipe-repository', [RecipeController::class, 'showUserRecipe']);
 Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit']);
 Route::get('/my-bookmark', [RecipeController::class, 'showBookmarkRecipe']);
+
 
 /**
  * Update, Notification, Disclaimer and Dev Info

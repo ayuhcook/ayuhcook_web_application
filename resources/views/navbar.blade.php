@@ -16,11 +16,11 @@
                 @if (!Auth::guest())
                 <li class="nav-item dropdown">
                     <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Engku Nazri
+                        {{ Auth::user()->f_name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item text-danger fw-bold" href="/recipe/create">Create Recipe</a></li>
-                        <li><a class="dropdown-item" href="/profile/123">My Profile</a></li>
+                        <li><a class="dropdown-item" href="/profile/{{ Auth::user()->id }}">My Profile</a></li>
                         <li><a class="dropdown-item" href="/my-recipe-repository">My Recipe Repository</a></li>
                         <li><a class="dropdown-item" href="/my-bookmark">My Bookmark</a></li>
                         <li><hr class="dropdown-divider"></li>

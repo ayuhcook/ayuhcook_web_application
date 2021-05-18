@@ -5,6 +5,11 @@
 @endsection
 
 @section('css_dependencies')
+    <style>
+        .alert-container {
+            max-width: 600px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -12,25 +17,50 @@
         <div class="py-5 bg-danger text-center rounded">
             <h2 class="text-white">Edit Your Profile</h2>
         </div>
+
+        <!-- Toast Button -->
+        @if(session('message'))
+            <div class="fixed-bottom alert-container ms-auto">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="fixed-bottom alert-container ms-auto">
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ $error }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+
         <!-- Update Profile Image -->
         <div class="py-4">
-            <div class="text-center py-4">
-                <img src="/sample_profile.jpg" class="rounded shadow" width="200px" alt="">
-            </div>
+            @if (Auth::user()->profile_image)
+                <div class="text-center py-4">
+                    <img src="/storage/{{ Auth::user()->profile_image }}" class="rounded shadow" width="200px" alt="">
+                </div>
+            @endif
             <h5>Edit Profile Image</h5>
             <hr>
-            <form action="">
+            <form action="/update-profile-image/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+                @method('PATCH')
+                @csrf
                 <div class="mb-3">
                     <label for="file_input" class="form-label">Profile Image</label>
                     <div id="file_input" class="input-group mb-3">
                         <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                        <input type="file" class="form-control" id="inputGroupFile01">
+                        <input type="file" class="form-control" name="profile_image" id="inputGroupFile01">
                     </div>
                 </div>
 
                 <div class="d-grid gap-2 pt-5">
-                    <button class="btn btn-danger" type="button">Update Profile Image</button>
-                    <a href="/profile/123" class="btn btn-outline-danger">Cancel</a>
+                    <button class="btn btn-danger">Update Profile Image</button>
+                    <a href="/profile/{{ $user->id }}" class="btn btn-outline-danger">Cancel</a>
                 </div>
             </form>
         </div>
@@ -39,24 +69,26 @@
         <div class="py-4">
             <h5>Edit Personal</h5>
             <hr>
-            <form action="">
+            <form action="/profile/{{ $user->id }}" method="POST">
+                @csrf
+                @method('PATCH')
                 <div class="row mb-3">
                     <div class="col">
                         <label for="f_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" placeholder="Engku Nazri" id="name">
+                        <input type="text" name="f_name" value="{{ $user->f_name }}" class="form-control" placeholder="Engku Nazri" id="name">
                     </div>
                     <div class="col">
                         <label for="l_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Engku Nasir" id="name">
+                        <input type="text" name="l_name" value="{{ $user->l_name }}" class="form-control" placeholder="Engku Nasir" id="name">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com" >
+                    <input type="email" name="email" class="form-control" value="{{ $user->email }}" id="email" placeholder="name@example.com" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="gender" class="form-label">Gender</label>
-                    <select class="form-select" id="gender" aria-label="Select your gender">
+                    <select class="form-select" name="gender" id="gender" aria-label="Select your gender">
                         <option value="1">Male</option>
                         <option value="2">Female</option>
                         <option value="2">Prefer Not To Say</option>
@@ -64,7 +96,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="profession" class="form-label">Profession</label>
-                    <select class="form-select" id="profession" aria-label="Select your gender">
+                    <select class="form-select" name="profession" id="profession" aria-label="Select your gender">
                         <option value="house wife">House Wife</option>
                         <option value="house husband">House Husband</option>
                         <option value="doctor">Doctor</option>
@@ -78,7 +110,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="country" class="form-label">Country</label>
-                    <select class="form-select" id="country" aria-label="country">
+                    <select class="form-select" name="country" id="country" aria-label="country">
                         <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
                         <option value="Algeria">Algeria</option>
@@ -328,9 +360,14 @@
                     </select>
                 </div>
 
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" name="description" class="form-control">{{ $user->description }}</textarea>
+                </div>
+
                 <div class="d-grid gap-2 pt-5">
-                    <button class="btn btn-danger" type="button">Update Profile</button>
-                    <a href="/profile/123" class="btn btn-outline-danger">Cancel</a>
+                    <button class="btn btn-danger">Update Profile</button>
+                    <a href="/profile/{{ $user->id }}" class="btn btn-outline-danger">Cancel</a>
                 </div>
             </form>
         </div>
@@ -339,19 +376,21 @@
         <div class="py-4">
             <h5>Edit Password</h5>
             <hr>
-            <form action="">
+            <form action="/update-password/{{ $user->id }}" method="POST">
+                @method('PATCH')
+                @csrf
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" name="password" class="form-control" id="password">
                 </div>
                 <div class="mb-3">
                     <label for="password2" class="form-label">Re-Type Password</label>
-                    <input type="password2" class="form-control" id="password">
+                    <input type="password" name="password2" class="form-control" id="password">
                 </div>
 
                 <div class="d-grid gap-2 pt-5">
-                    <button class="btn btn-danger" type="button">Update Password</button>
-                    <a href="/profile/123" class="btn btn-outline-danger">Cancel</a>
+                    <button class="btn btn-danger">Update Password</button>
+                    <a href="/profile/{{ $user->id }}" class="btn btn-outline-danger">Cancel</a>
                 </div>
             </form>
         </div>
@@ -361,6 +400,9 @@
 @endsection
 
 @section('script')
+    <script>
+        $users
+    </script>
 @endsection
 
 @section('js_dependencies')

@@ -7,7 +7,6 @@
 @section('css_dependencies')
     <style>
         .form {
-            margin-top: 50px;
             max-width: 500px;
             padding-top: 5rem;
             padding-bottom: 5rem;

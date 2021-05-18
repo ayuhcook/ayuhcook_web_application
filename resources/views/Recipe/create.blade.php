@@ -40,10 +40,21 @@
                             </div>
                             <div class="mb-3">
                                 <label for="level" class="form-label">Cooking Difficulties</label>
+                                <div id="level">
+                                    <input type="radio" class="btn-check" name="level" id="begineer" autocomplete="off" required>
+                                    <label class="btn btn-outline-success" for="begineer">Begineer Level</label>
+                                    <input type="radio" class="btn-check" name="level" id="intermediate" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="intermediate">Intermediate Level</label>
+                                    <input type="radio" class="btn-check" name="level" id="expert" autocomplete="off">
+                                    <label class="btn btn-outline-warning" for="expert">Expert Level</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="level" class="form-label">Category</label>
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected value="1">Begineer Level</option>
-                                    <option value="2">Intermidiate Level</option>
-                                    <option value="3">Hard Level</option>
+                                    <option value="main-dish">Main Dish</option>
+                                    <option value="drink-and-beverage">Drink & Beverage</option>
+                                    <option value="dessert">Dessert</option>
                                 </select>
                             </div>
                             <div class="mb-3">

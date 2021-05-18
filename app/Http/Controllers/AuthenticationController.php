@@ -39,7 +39,7 @@ class AuthenticationController extends Controller
         if(!Auth::guest()) {
             Auth::logout();
 
-            return redirect('/sign-in')->with('message', 'You have been successfully sign out from the website ;D');
+            return redirect('/sign-in')->with('message', 'You have been successfully sign out');
         }
 
         return abort(401);

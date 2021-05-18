@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Bookmark::class, 'user_id')->join('recipes', 'bookmarks.recipe_id', 'recipes.id');
     }
+
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class, 'post_by');
+    }
 }
