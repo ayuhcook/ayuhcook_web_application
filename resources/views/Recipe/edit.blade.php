@@ -218,6 +218,9 @@
                 </div>
             </div>
         </div>
+        <div class="d-grid gap-2 pt-4">
+            <button class="btn btn-danger" type="button">Publish the recipe</button>
+        </div>
     </div>
 @endsection
 

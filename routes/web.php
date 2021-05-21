@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/recipes', [RecipeController::class, 'index']);
 Route::get('/recipes/{id}', [RecipeController::class, 'show']);
-Route::get('/recipe/{id}/edit', [RecipeController::class, 'edit']);
-Route::get('/recipe/create', [RecipeController::class, 'create']);
-Route::get('/recipe/create/ingredient', [RecipeController::class, 'createIngredient']);
-Route::get('/recipe/create/step', [RecipeController::class, 'createStep']);
 
 Route::get('/category', [RecipeController::class, 'showCategory']);
 Route::get('/category/{category_name}', [RecipeController::class, 'category']);
@@ -44,10 +40,17 @@ Route::patch('/profile/{id}', [UserController::class, 'update']);
 Route::patch('/update-password/{id}', [UserController::class, 'updatePassword']);
 Route::patch('/update-profile-image/{id}', [UserController::class, 'updateProfileImage']);
 
-Route::get('/my-recipe-repository', [RecipeController::class, 'showUserRecipe']);
-Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit']);
 Route::get('/my-bookmark', [RecipeController::class, 'showBookmarkRecipe']);
 
+Route::get('/my-recipe-repository', [RecipeController::class, 'showUserRecipe']);
+Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit']);
+
+Route::get('/recipe/create', [RecipeController::class, 'create']);
+Route::post('/recipe/create', [RecipeController::class, 'store']);
+Route::patch('/recipe/create', [RecipeController::class, 'store']);
+
+Route::get('/recipe/create/ingredient', [RecipeController::class, 'createIngredient']);
+Route::get('/recipe/create/step', [RecipeController::class, 'createStep']);
 
 /**
  * Update, Notification, Disclaimer and Dev Info

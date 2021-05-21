@@ -66,8 +66,6 @@ class UserController extends Controller
         User::find(Auth::user()->id)->update($credentials);
 
         return redirect()->back()->with('message', 'The personal credential has been updated');
-
-        return abort(401);
     }
 
     public function updatePassword(Request $request, $id)

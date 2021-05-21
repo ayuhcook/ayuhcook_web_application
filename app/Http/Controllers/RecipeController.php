@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class RecipeController extends Controller
 {
@@ -27,6 +28,39 @@ class RecipeController extends Controller
     }
 
     public function store(Request $request)
+    {
+        $this->validateRecipeForm($request, 'recipe');
+
+        // initiate the variable
+        $image_1 = null;
+        $image_2 = null;
+        $image_3 = null;
+
+        $credentials = [
+            'name' => $request->name,
+            'preparation_time' => $request->preparation_time,
+            'servings' => $request->servings,
+            'level' => $request->level,
+            'category' => $request->category,
+            'image_1' => $image_1,
+            'image_2' => $image_2,
+            'image_3' => $image_3,
+        ];
+
+        dd($credentials);
+    }
+
+    public function storeIngredient(Request $request)
+    {
+        //
+    }
+
+    public function storeCookingStep(Request $request)
+    {
+        //
+    }
+
+    public function completeRecipe(Request $request)
     {
         //
     }
@@ -72,9 +106,39 @@ class RecipeController extends Controller
         return view('Recipe.index');
     }
 
-    public function validateRecipeForm()
+    public function validateRecipeForm($request, $part)
     {
-        // this is validation for the form
+        switch ($part) {
+            case 'recipe':
+                return $request->validate([
+                    'name' => 'required|max:255',
+                    'image_1' => 'required|mimes:png,jpg,jpeg',
+                    'image_2' => 'mimes:png,jpg,jpeg',
+                    'image_3' => 'mimes:png,jpg,jpeg',
+                    'description' => 'max:500',
+                    'servings' => 'required|integer',
+                    'preparation_time' => 'required|integer',
+                    'level' => 'required',
+                    'category' => 'required',
+                ]);
+                break;
+
+            case 'ingredients':
+                return $request->validate([
+                    'name' => 'required|max:255',
+                ]);
+                break;
+
+            case 'steps':
+                return $request->validate([
+                    'name' => 'required|max:255',
+                ]);
+                break;
+
+            default:
+                // return nothing
+                break;
+        }
     }
 
     public function automationDeleteInformation()

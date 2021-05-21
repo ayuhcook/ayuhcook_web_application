@@ -18,7 +18,7 @@
             <h2 class="text-white">Edit Your Profile</h2>
         </div>
 
-        <!-- Toast Button -->
+        <!-- toast function -->
         @if(session('message'))
             <div class="fixed-bottom alert-container ms-auto">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">

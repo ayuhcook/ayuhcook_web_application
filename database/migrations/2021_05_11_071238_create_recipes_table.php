@@ -23,12 +23,15 @@ class CreateRecipesTable extends Migration
             $table->integer('servings');
             $table->integer('preparation_time');
             $table->string('level');
+            $table->string('category');
             $table->boolean('publicity')->default(true);
-            $table->boolean('is_complete')->default(true);
+            $table->boolean('is_complete')->default(false);
 
             $table->bigInteger('likes')->default(0);
-            $table->unsignedBigInteger('post_by')->nullable();
+            $table->unsignedBigInteger('post_by');
             $table->timestamps();
+
+            $table->foreign('post_by')->references('id')->on('users');
         });
     }
 
