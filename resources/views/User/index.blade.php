@@ -16,9 +16,15 @@
     <div class="container-content">
         <!-- User information -->
         <div class="text-center">
-            <div class="bg-danger rounded py-5">
-                <img src="/sample_profile.jpg" class="img-thumbnail" width="200px" alt="">
-            </div>
+            @if ($user->profile_image)
+                <div class="bg-danger rounded py-5">
+                    <img src="/storage/{{ $user->profile_image }}" class="img-thumbnail" width="200" alt="">
+                </div>
+            @else
+                <div class="bg-danger rounded py-5">
+                    <img src="/no-profile-image.png" class="img-thumbnail" width="200" alt="">
+                </div>
+            @endif
             <h2 class="text-danger fw-bold p-4">{{ $user->f_name.' '.$user->l_name }}</h2>
             <p><i class="fas fa-map-marker-alt"></i> {{ $user->country }} | <i class="fas fa-utensils"></i> {{ $contribution_count }} Contributions</p>
             <p class="description-container mx-auto">
