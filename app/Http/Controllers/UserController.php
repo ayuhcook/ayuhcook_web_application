@@ -11,6 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        //
     }
 
     public function create()
@@ -60,9 +61,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validateUpdateForm($request);
-
         $credentials = $request->only(['f_name', 'l_name', 'email', 'gender', 'profession', 'country', 'description']);
-
         User::find(Auth::user()->id)->update($credentials);
 
         return redirect()->back()->with('message', 'The personal credential has been updated');
@@ -88,7 +87,6 @@ class UserController extends Controller
     public function updateProfileImage($id, Request $request)
     {
         $this->validateProfileImage($request);
-
         $user = User::find(Auth::user()->id);
 
         if($user->profile_image) {
@@ -99,7 +97,6 @@ class UserController extends Controller
 
         $imageStorePath = $request->file('profile_image')->storePublicly('/public');
         $imageName = pathinfo($imageStorePath)['basename'];
-
         User::find(Auth::user()->id)->update(['profile_image' => $imageName]);
 
         return redirect()->back()->with('message', 'The profile image has been updated');
@@ -107,6 +104,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+        //
     }
 
     public function resetPassword()

@@ -5,6 +5,11 @@
 @endsection
 
 @section('css_dependencies')
+    <style>
+        .alert-container {
+            max-width: 600px;
+        }
+    </style>
 @endsection
 
 @section('content')
