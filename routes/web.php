@@ -47,8 +47,15 @@ Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit']);
 
 Route::get('/recipe/create', [RecipeController::class, 'create']);
 Route::post('/recipe/create', [RecipeController::class, 'store']);
+
 Route::get('/recipe/create/{id}/ingredient', [RecipeController::class, 'createIngredient']);
+Route::post('/recipe/create/{id}/ingredient', [RecipeController::class, 'storeIngredient']);
+
 Route::get('/recipe/create/{id}/step', [RecipeController::class, 'createStep']);
+
+Route::get('/recipe/{id}/delete/recipe', [RecipeController::class, 'destroy']);
+Route::get('/recipe/{id}/delete/ingredient/{ingredient_id}', [RecipeController::class, 'destroyIngredient']);
+Route::get('/recipe/{id}/delete/step/{step_id}', [RecipeController::class, 'destroyStep']);
 
 /**
  * Update, Notification, Disclaimer and Dev Info

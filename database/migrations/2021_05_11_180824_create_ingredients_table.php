@@ -17,8 +17,6 @@ class CreateIngredientsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('recipe_id');
             $table->string('name');
-            $table->float('weight_kg')->nullable();
-            $table->float('quantity')->nullable();
 
             $table->foreign('recipe_id')->references('id')->on('recipes');
             $table->timestamps();

@@ -93,22 +93,25 @@
                                 <label for="file_input" class="form-label">Preview Image One</label>
                                 <div id="file_input" class="input-group mb-3">
                                     <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                                    <input type="file" class="form-control" name="image_1" id="inputGroupFile01" required>
+                                    <input type="file" class="form-control" id="inputGroupFile01">
                                 </div>
+                                <p><a target="_blank" href="/storage/{{ $recipe->image_1 }}">{{ $recipe->image_1 }}</a></p>
                             </div>
                             <div class="mb-3">
                                 <label for="file_input_2" class="form-label">Preview Image Two</label>
                                 <div id="file_input" class="input-group mb-3">
                                     <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                                    <input type="file" class="form-control" name="image_2" id="inputGroupFile02">
+                                    <input type="file" class="form-control" id="inputGroupFile02">
                                 </div>
+                                <p><a target="_blank" href="/storage/{{ $recipe->image_2 }}">{{ $recipe->image_2 }}</a></p>
                             </div>
                             <div class="mb-3">
                                 <label for="file_input_3" class="form-label">Preview Image Three</label>
                                 <div id="file_input" class="input-group mb-3">
                                     <label class="input-group-text" for="inputGroupFile03">Upload</label>
-                                    <input type="file" class="form-control" name="image_3" id="inputGroupFile03">
+                                    <input type="file" class="form-control" id="inputGroupFile03">
                                 </div>
+                                <p><a target="_blank" href="/storage/{{ $recipe->image_3 }}">{{ $recipe->image_3 }}</a></p>
                             </div>
 
                             <div class="d-grid gap-2 pt-5">

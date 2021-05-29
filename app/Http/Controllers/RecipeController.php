@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredient;
 use App\Models\Recipe;
+use App\Models\Step;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +28,7 @@ class RecipeController extends Controller
 
         $ingredients = Recipe::find($id)->ingredients;
 
-        return view('Recipe.ingredient', compact('recipe', 'ingredients'));
+        return view('Recipe.ingredient', compact('recipe', 'ingredients', 'id'));
     }
 
     public function createStep($id)
@@ -37,13 +39,12 @@ class RecipeController extends Controller
 
         $steps = Recipe::find($id)->steps;
 
-        return view('Recipe.step', compact('recipe', 'ingredients', 'steps'));
+        return view('Recipe.step', compact('recipe', 'ingredients', 'steps', 'id'));
     }
 
     public function store(Request $request)
     {
         $this->validateRecipeForm($request, 'recipe');
-
 
         $user_id = Auth::user()->id;
 
@@ -84,16 +85,21 @@ class RecipeController extends Controller
 
         $id = Recipe::insertGetId($credentials);
 
-        return redirect('recipe/create/'.$id.'/ingredient');
+        return redirect('recipe/create/'.$id.'/ingredient')->with('message', 'The recipe has been created');
     }
 
-    public function storeIngredient(Request $request)
+    public function storeIngredient($id, Request $request)
     {
         $this->validateRecipeForm($request, 'ingredients');
 
         $credentials = [
-
+            'recipe_id' => $id,
+            'name' => $request->name
         ];
+
+        Ingredient::create($credentials);
+
+        return redirect()->back()->with('message', 'The ingredient has been added');
     }
 
     public function storeCookingStep(Request $request)
@@ -123,7 +129,19 @@ class RecipeController extends Controller
 
     public function destroy($id)
     {
-        //
+        return redirect()->back()->with('message', 'The recipe has been removed');
+    }
+
+    public function destroyIngredient($id, $ingredient_id)
+    {
+        Ingredient::find($ingredient_id)->delete();
+
+        return redirect()->back()->with('message', 'The ingredient been removed');
+    }
+
+    public function destroyStep($id, $step_id)
+    {
+        return redirect()->back()->with('message', 'The step has been removed');
     }
 
     public function showUserRecipe()
