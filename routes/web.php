@@ -47,10 +47,8 @@ Route::get('/recipes/{id}/edit', [RecipeController::class, 'edit']);
 
 Route::get('/recipe/create', [RecipeController::class, 'create']);
 Route::post('/recipe/create', [RecipeController::class, 'store']);
-Route::patch('/recipe/create', [RecipeController::class, 'store']);
-
-Route::get('/recipe/create/ingredient', [RecipeController::class, 'createIngredient']);
-Route::get('/recipe/create/step', [RecipeController::class, 'createStep']);
+Route::get('/recipe/create/{id}/ingredient', [RecipeController::class, 'createIngredient']);
+Route::get('/recipe/create/{id}/step', [RecipeController::class, 'createStep']);
 
 /**
  * Update, Notification, Disclaimer and Dev Info

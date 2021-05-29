@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -19,14 +20,24 @@ class RecipeController extends Controller
         return view('Recipe.create');
     }
 
-    public function createIngredient()
+    public function createIngredient($id)
     {
-        return view('Recipe.ingredient');
+        $recipe = Recipe::find($id);
+
+        $ingredients = Recipe::find($id)->ingredients;
+
+        return view('Recipe.ingredient', compact('recipe', 'ingredients'));
     }
 
-    public function createStep()
+    public function createStep($id)
     {
-        return view('Recipe.step');
+        $recipe = Recipe::find($id);
+
+        $ingredients = Recipe::find($id)->ingredients;
+
+        $steps = Recipe::find($id)->steps;
+
+        return view('Recipe.step', compact('recipe', 'ingredients', 'steps'));
     }
 
     public function store(Request $request)
@@ -45,28 +56,16 @@ class RecipeController extends Controller
             $path = $request->file('image_1')->storePublicly('/public');
             $filename = pathinfo($path)['basename'];
             $image_1 = $filename;
-
-            // $img = Image::make(public_path('storage/'.$image_1));
-            // $img->resizeCanvas(200, 200);
-            // $img->save(public_path('storage/'.$image_1));
         }
         if ($request->image_2){
             $path = $request->file('image_2')->storePublicly('/public');
             $filename = pathinfo($path)['basename'];
             $image_2 = $filename;
-
-            // $img = Image::make(public_path('storage/'.$image_1));
-            // $img->resizeCanvas(200, 200);
-            // $img->save(public_path('storage/'.$image_1));
         }
         if ($request->image_3){
             $path = $request->file('image_3')->storePublicly('/public');
             $filename = pathinfo($path)['basename'];
             $image_3 = $filename;
-
-            // $img = Image::make(public_path('storage/'.$image_1));
-            // $img->resizeCanvas(200, 200);
-            // $img->save(public_path('storage/'.$image_1));
         }
 
         $credentials = [
@@ -78,16 +77,23 @@ class RecipeController extends Controller
             'image_1' => $image_1,
             'image_2' => $image_2,
             'image_3' => $image_3,
+            'post_by' => $user_id,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ];
 
-        Recipe::create($credentials);
+        $id = Recipe::insertGetId($credentials);
 
-        // redirect to the next page
+        return redirect('recipe/create/'.$id.'/ingredient');
     }
 
     public function storeIngredient(Request $request)
     {
-        //
+        $this->validateRecipeForm($request, 'ingredients');
+
+        $credentials = [
+
+        ];
     }
 
     public function storeCookingStep(Request $request)
@@ -152,9 +158,9 @@ class RecipeController extends Controller
             case 'recipe':
                 return $request->validate([
                     'name' => 'required|max:255',
-                    'image_1' => 'required|mimes:png,jpg,jpeg',
-                    'image_2' => 'mimes:png,jpg,jpeg',
-                    'image_3' => 'mimes:png,jpg,jpeg',
+                    'image_1' => 'required|mimes:png,jpg,jpeg|max:8192',
+                    'image_2' => 'mimes:png,jpg,jpeg|size:3000',
+                    'image_3' => 'mimes:png,jpg,jpeg|size:3000',
                     'description' => 'max:500',
                     'servings' => 'required|integer',
                     'preparation_time' => 'required|integer',
