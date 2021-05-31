@@ -178,47 +178,67 @@
                                     <th>Action</th>
                                 </tr>
                                 <tr>
-                                    <form action="">
-                                        <td>1</td>
-                                        <td>Preheat your oven at 190'c for 15 minutes</td>
-                                        <input type="hidden" name="id" value="">
-                                        <td><button class="btn btn-outline-danger btn-sm">Delete</button></td>
-                                    </form>
+                                    @foreach ($steps as $data)
+                                        <form action="" method="">
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td>
+                                                <div>
+                                                    {{ Str::limit($data->step, 20) }}
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <img src="/storage/{{ $data->image_1 }}" class="w-100 rounded" alt="">
+                                                    </div>
+                                                    <div class="col">
+                                                        <img src="/storage/{{ $data->image_2 }}" class="w-100 rounded" alt="">
+                                                    </div>
+                                                    <div class="col">
+                                                        <img src="/storage/{{ $data->image_3 }}" class="w-100 rounded" alt="">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger btn-sm">Edit</button>
+                                                <a href="/recipe/{{ $recipe->id }}/delete/step/{{ $data->id }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                                            </td>
+                                        </form>
+                                    @endforeach
                                 </tr>
                             </table>
                         </div>
 
                         <!-- add cooking step -->
                         <div>
-                            <form action="" autocomplete="off">
+                            <form action="/recipe/create/{{ $recipe->id }}/step" method="POST" enctype="multipart/form-data" autocomplete="off">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="step" class="form-label">Step</label>
-                                    <textarea name="" id="" class="form-control"></textarea>
+                                    <textarea name="step" id="" class="form-control"></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="file_input" class="form-label">Step Image One (Optional)</label>
                                     <div id="file_input" class="input-group mb-3">
                                         <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                                        <input type="file" class="form-control" id="inputGroupFile01">
+                                        <input type="file" name="image_1" class="form-control" id="inputGroupFile01">
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="file_input_2" class="form-label">Step Image Two (Optional)</label>
                                     <div id="file_input" class="input-group mb-3">
                                         <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                                        <input type="file" class="form-control" id="inputGroupFile02">
+                                        <input type="file" name="image_2" class="form-control" id="inputGroupFile02">
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="file_input_3" class="form-label">Step Image Three (Optional)</label>
                                     <div id="file_input" class="input-group mb-3">
                                         <label class="input-group-text" for="inputGroupFile03">Upload</label>
-                                        <input type="file" class="form-control" id="inputGroupFile03">
+                                        <input type="file" name="image_3" class="form-control" id="inputGroupFile03">
                                     </div>
                                 </div>
 
                                 <div class="d-grid gap-2 pt-3">
-                                    <button class="btn btn-outline-danger" type="button">Add Step</button>
+                                    <button class="btn btn-outline-danger">Add Step</button>
                                 </div>
                             </form>
                         </div>

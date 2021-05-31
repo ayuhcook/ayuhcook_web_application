@@ -52,6 +52,7 @@ Route::get('/recipe/create/{id}/ingredient', [RecipeController::class, 'createIn
 Route::post('/recipe/create/{id}/ingredient', [RecipeController::class, 'storeIngredient']);
 
 Route::get('/recipe/create/{id}/step', [RecipeController::class, 'createStep']);
+Route::post('/recipe/create/{id}/step', [RecipeController::class, 'storeCookingStep']);
 
 Route::get('/recipe/{id}/delete/recipe', [RecipeController::class, 'destroy']);
 Route::get('/recipe/{id}/delete/ingredient/{ingredient_id}', [RecipeController::class, 'destroyIngredient']);

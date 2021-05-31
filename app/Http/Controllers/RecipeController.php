@@ -102,9 +102,40 @@ class RecipeController extends Controller
         return redirect()->back()->with('message', 'The ingredient has been added');
     }
 
-    public function storeCookingStep(Request $request)
+    public function storeCookingStep($id, Request $request)
     {
-        //
+        $this->validateRecipeForm($request, 'steps');
+
+        $image_1 = null;
+        $image_2 = null;
+        $image_3 = null;
+
+        if ($request->image_1){
+            $path = $request->file('image_1')->storePublicly('/public');
+            $filename = pathinfo($path)['basename'];
+            $image_1 = $filename;
+        }
+        if ($request->image_2){
+            $path = $request->file('image_2')->storePublicly('/public');
+            $filename = pathinfo($path)['basename'];
+            $image_2 = $filename;
+        }
+        if ($request->image_3){
+            $path = $request->file('image_3')->storePublicly('/public');
+            $filename = pathinfo($path)['basename'];
+            $image_3 = $filename;
+        }
+        $credentials = [
+            'step' => $request->step,
+            'recipe_id' => $id,
+            'image_1' => $image_1,
+            'image_2' => $image_2,
+            'image_3' => $image_3,
+        ];
+
+        Step::create($credentials);
+
+        return redirect()->back()->with('message', 'The step has been added');
     }
 
     public function completeRecipe(Request $request)
@@ -177,8 +208,8 @@ class RecipeController extends Controller
                 return $request->validate([
                     'name' => 'required|max:255',
                     'image_1' => 'required|mimes:png,jpg,jpeg|max:8192',
-                    'image_2' => 'mimes:png,jpg,jpeg|size:3000',
-                    'image_3' => 'mimes:png,jpg,jpeg|size:3000',
+                    'image_2' => 'mimes:png,jpg,jpeg|max:8192',
+                    'image_3' => 'mimes:png,jpg,jpeg|max:8192',
                     'description' => 'max:500',
                     'servings' => 'required|integer',
                     'preparation_time' => 'required|integer',
@@ -195,7 +226,10 @@ class RecipeController extends Controller
 
             case 'steps':
                 return $request->validate([
-                    'name' => 'required|max:255',
+                    'step' => 'required|max:1000',
+                    'image_1' => 'mimes:png,jpg,jpeg|max:8192',
+                    'image_2' => 'mimes:png,jpg,jpeg|max:8192',
+                    'image_3' => 'mimes:png,jpg,jpeg|max:8192',
                 ]);
                 break;
 

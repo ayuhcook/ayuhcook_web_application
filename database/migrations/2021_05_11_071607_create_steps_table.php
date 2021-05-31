@@ -17,7 +17,6 @@ class CreateStepsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('recipe_id');
             $table->text('step');
-            $table->text('note')->nullable();
             $table->string('image_1')->nullable();
             $table->string('image_2')->nullable();
             $table->string('image_3')->nullable();
